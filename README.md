@@ -1,8 +1,6 @@
 # Quotebender API
 
-A free REST API that serves quotes from Avatar: The Last Airbender.
-
-⚠️ This API is a WIP, come back soon!
+A REST API that serves quotes from Avatar: The Last Airbender.
 
 ---
 
