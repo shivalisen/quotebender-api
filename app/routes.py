@@ -1,6 +1,7 @@
-from flask import render_template, request, abort, jsonify
+from flask import render_template, request, abort, Response
 from app import app, db, pydantic_models, db_models
 from sqlalchemy import select, func
+import json
 
 def query_db(params: pydantic_models.Params) -> list[db_models.Quote]:
   filters = []
@@ -61,17 +62,14 @@ def get_quotes():
     'episode_number': q.episode.number
   } for q in res]
 
-  return jsonify(quotes), 200
+  output = json.dumps(quotes, indent=2, ensure_ascii=False)
+  return Response(output, status=200, mimetype='application/json')
        
 
 @app.route('/quotes/random')
 def get_random_quotes():
-  q = query_db_random()
+  quote = query_db_random()
 
-  return jsonify({
-    'quote': q.quote,
-    'character': q.character,
-    'episode_name': q.episode_name,
-    'season_number': q.episode.season_number,
-    'episode_number': q.episode.number
-  }), 200
+  output = json.dumps(quote, indent=2, ensure_ascii=False)
+  return Response(output, status=200, mimetype='application/json')
+
