@@ -1,12 +1,12 @@
 # Quotebender API
 
-A REST API that serves quotes from Avatar: The Last Airbender.
+A REST API for quotes from Avatar: The Last Airbender.
 
 ---
 
 ## Features
 
-- Filter quotes by character, season number, and episode number
+- Filter quotes by character, season number, episode number, or all 3
 - Get a random quote
 
 ---
